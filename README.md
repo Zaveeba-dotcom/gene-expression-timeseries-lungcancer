@@ -1,36 +1,102 @@
-# 📈 Gene Expression Time-Series Analysis
-
-> **Track, analyze, and visualize longitudinal gene expression dynamics in lung cancer samples across 20 distinct time points.**
-
+🧬 Gene Expression Time-Series Analysis
+Longitudinal characterization of transcriptional dynamics in lung cancer
+A reproducible R-based workflow for investigating how selected genes change across 20 longitudinal sampling points in lung cancer expression data.
+Rather than treating gene expression as a static measurement, this analysis focuses on the temporal trajectory of transcriptional activity, allowing expression patterns to be examined as dynamic biological processes.
 ---
-
-## ⚡ Key Capabilities
-* **Targeted Cohort Filtering**: Filters multi-sample expression data specifically for cancer-phenotype samples from public GEO datasets[cite: 5, 7].
-* **Longitudinal Tracking**: Tracks temporal expression trajectories for target genes (`HOPX`, `SPARCL1`, `TFF1`, `APOB`)[cite: 5, 7].
-* **Dynamic Visualization**: Generates continuous, transparent overlapping area plots using `ggplot2` to compare expression shifts across time points.
-* **Publication-Ready**: Outputs clean, custom-styled vector graphics (`TimeSeries_Area_Graphs.pdf`)[cite: 5, 7].
-
+🔬 Research Focus
+The workflow isolates cancer-phenotype samples from publicly available GEO-derived expression data and follows the temporal behavior of four target genes:
+HOPX
+SPARCL1
+TFF1
+APOB
+The analysis transforms a multi-sample expression matrix into a longitudinal representation of gene activity and produces publication-ready visualizations of expression trajectories.
+Core question
+> **How does the expression of selected genes evolve across the longitudinal sampling period in lung cancer samples?**
+This makes the repository useful as a template for exploratory longitudinal transcriptomic analysis beyond the specific dataset used here.
 ---
-
-## 📂 Project Structure
-
-| File | Description |
-| :--- | :--- |
-| **`area_graph_analysis.R`** | Core R script for filtering, data reshaping, and plotting[cite: 5, 7]. |
-| **`gene_expressions.csv`**[cite: 7] | Input expression matrix (genes $\times$ sample accessions)[cite: 5, 7]. |
-| **`metadata.csv`**[cite: 7] | Sample metadata detailing accessions, phenotypes, and time points[cite: 5, 7]. |
-| **`Genes.txt`**[cite: 7] | Target gene list (`HOPX`, `SPARCL1`, `TFF1`, `APOB`)[cite: 5, 7]. |
-| **`TimeSeries_Area_Graphs.pdf`**[cite: 7] | Vector publication plot showing gene expression trends[cite: 5, 6, 7]. |
-
+🧪 Analytical Workflow
+```text
+Expression Matrix
+       │
+       ▼
+Sample Metadata
+       │
+       ▼
+Cancer-Phenotype Filtering
+       │
+       ▼
+Temporal Sample Ordering
+       │
+       ▼
+Target-Gene Extraction
+       │
+       ▼
+Data Reshaping
+       │
+       ▼
+Longitudinal Expression Profiles
+       │
+       ▼
+Publication-Ready Visualization
+```
 ---
-
-## 🚀 Quick Start
-
-### 1. Requirements
-Ensure the required R libraries are installed:
-```R
+📊 Analysis Outputs
+The workflow generates continuous overlapping area plots using `ggplot2` to visualize expression trajectories across time.
+The resulting figure is exported as a vector PDF:
+`TimeSeries_Area_Graphs.pdf`
+Vector output preserves resolution for downstream use in manuscripts, presentations, and scientific figures.
+---
+📁 Repository Structure
+```text
+gene-expression-timeseries-lungcancer/
+│
+├── area_graph_analysis.R
+│
+├── gene_expressions.csv
+├── metadata.csv
+├── Genes.txt
+│
+└── TimeSeries_Area_Graphs.pdf
+```
+Input data
+File	Purpose
+`gene_expressions.csv`	Gene × sample expression matrix
+`metadata.csv`	Sample accession, phenotype, and temporal metadata
+`Genes.txt`	Target gene panel
+Outputs
+File	Purpose
+`TimeSeries_Area_Graphs.pdf`	Publication-ready longitudinal expression visualization
+---
+🛠️ Technology
+R
+`ggplot2`
+`reshape2`
+`dplyr`
+---
+🚀 Reproducibility
+Install the required packages:
+```r
 install.packages(c("ggplot2", "reshape2", "dplyr"))
-2. Execution
-Place your input files (gene_expressions.csv, metadata.csv, and Genes.txt) in the working directory[cite: 5] and run:
-Bash
+```
+Place the input files in the working directory and execute:
+```bash
 Rscript area_graph_analysis.R
+```
+The workflow produces the final visualization automatically.
+---
+🧠 Why This Repository?
+This project demonstrates an approach to time-aware transcriptomic analysis, where biological interpretation is based not only on expression magnitude but also on how expression changes across a defined temporal series.
+The workflow can be adapted to:
+longitudinal cancer datasets
+treatment-response studies
+disease progression studies
+developmental expression profiles
+multi-timepoint transcriptomic experiments
+---
+📌 Scope & Interpretation
+The visualization describes expression dynamics within the analyzed cohort. Temporal association should not be interpreted as evidence of causality, and downstream biological conclusions require appropriate statistical and experimental validation.
+---
+👤 Author
+Zaveeba Muzaffar
+Biochemistry · Molecular Biology · Computational Biology
+> Building reproducible computational workflows at the intersection of molecular biology, bioinformatics, and biochemical research.
